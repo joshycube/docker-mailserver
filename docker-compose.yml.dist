@@ -1,0 +1,18 @@
+mail:
+  image: joshycube/mail
+  hostname: mail
+  domainname: codegarage.net
+  ports:
+  - "25:25"
+  - "143:143"
+  - "587:587"
+  - "993:993"
+  volumes:
+  - /var/mail:/var/mail
+  - ./spamassassin:/tmp/spamassassin/
+  - ./postfix:/tmp/postfix/
+  - ./letsencrypt/etc:/etc/letsencrypt
+  environment:
+  - DMS_SSL=self-signed
+  - ENABLE_POP3=1
+
